@@ -60,3 +60,25 @@ PATCH {{baseUrl}}/orders/{{orderId}}/ship
 
 ### Relatório de faturamento
 GET {{baseUrl}}/reports/revenue
+
+### Cadastrar cupom
+POST {{baseUrl}}/coupons
+Content-Type: application/json
+
+{ "code": "TURMA20", "discountPercent": 20, "expiresAt": "2035-12-31" }
+
+### Criar pedido com o cupom cadastrado
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "customerId": "{{customerId}}",
+  "items": [{ "productId": "{{productId}}", "quantity": 1 }],
+  "coupon": "TURMA20"
+}
+
+### Listar os pedidos de um cliente
+GET {{baseUrl}}/customers/{{customerId}}/orders
+
+### Cancelar pedido pendente (use o ID de um pedido que ainda não foi enviado)
+PATCH {{baseUrl}}/orders/{{orderId}}/cancel

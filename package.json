@@ -8,7 +8,9 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "seed": "tsx src/seed.ts",
-    "test": "jest --passWithNoTests"
+    "test": "jest",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration"
   },
   "license": "MIT",
   "dependencies": {
